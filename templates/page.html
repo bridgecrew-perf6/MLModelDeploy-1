@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" media="screen">
+        <title>Star Classifier</title>
+    </head>
+    <body>   
+        <h1>Star Classification Algorithm ✨</h1>
+        <h2>This webpage was created with the intent of practicing web development skills while also allowing for a simple case of deployment of a machine learning model.</h2>
+        <p>The assumptions and model used in this page are documented <a href="https://www.kaggle.com/code/devassaxd/star-classification-with-a-twist">here</a>.</p>
+        <p>The original dataset used to create this model and information about the dataset can be found <a href="https://www.kaggle.com/datasets/deepu1109/star-dataset">here</a>.</p>
+        <p>Simply input the data from your star and we will classify it according to our model.</p>
+        <form action="{{ url_for('predict')}}"method="post">
+            <div>
+            <label for="atemperature">Absolute Temperature (K)</label><br>
+            <input type="text" id="atemperature" name="atemperature" placeholder="Insert a value"><br><br>
+            </div>
+            <div>
+            <label for="rluminosity">Relative Luminosity (log(L/L<sub>0</sub>))</label><br>
+            <input type="text" id="rluminosity" name="rluminosity" placeholder="Insert a value"><br><br>
+            </div>
+            <div>
+            <label for="rradius">Relative Radius (log(R/R<sub>0</sub>))</label><br>
+            <input type="text" id="rradius" name="rradius" placeholder="Insert a value"><br><br>
+            </div>
+            <div>
+            <label for="amagnitude">Absolute Magnitude (M<sub>V</sub>)</label><br>
+            <input type="text" id="amagnitude" name="amagnitude" placeholder="Insert a value"><br><br>
+            </div>
+            <div>
+            <label for="sclass">Spectral Class **</label><br>
+            <input type="text" id="sclass" name="sclass" placeholder="Insert a value"><br>
+            <h5>** Spectral Class has the possible accepted values: O, B, A, F, G, K, M</h5><br>
+            </div>
+            <button>Calculate!</button>
+        </form>
+    </body>
+        <p class="warning">{{invalid_type_warning}}</p>
+        <br>
+        <p>{{prediction_text}}</p>
+        <p>Highlighted features of your star:</p>
+        <p>{{temp_text}}</p>
+        <p>{{l_text}}</p>
+        <p>{{r_text}}</p>
+        <p>{{magnitude_text}}</p><br>
+
+    
+</html>
